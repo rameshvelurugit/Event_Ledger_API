@@ -1,0 +1,24 @@
+package com.assignment.ledger.dto;
+
+@Getter
+@Setter
+public class EventDTO {
+
+    @NotBlank
+    private String eventId;
+
+    @NotBlank
+    private String accountId;
+
+    @NotNull
+    private EventType type;
+
+    @DecimalMin(value = "0.01", inclusive = true)
+    private BigDecimal amount;
+
+    @NotBlank
+    private String currency;
+
+    @NotNull
+    private Instant eventTimestamp;
+}

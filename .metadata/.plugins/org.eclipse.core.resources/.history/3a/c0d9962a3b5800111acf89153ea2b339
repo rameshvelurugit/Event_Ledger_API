@@ -1,0 +1,39 @@
+package com.assignment.ledger.controller;
+
+@RestController
+@RequestMapping("/")
+public class EventController {
+
+    private final EventService service;
+
+    public EventController(EventService service) {
+        this.service = service;
+    }
+
+    @PostMapping("/events")
+    public ResponseEntity<?> create(@RequestBody @Valid Event event) {
+        Event saved = service.createEvent(event);
+        return ResponseEntity.ok(saved);
+    }
+
+    @GetMapping("/events/{id}")
+    public Event getById(@PathVariable String id) {
+        return service.getEvent(id);
+    }
+
+    @GetMapping("/events")
+    public List<Event> getByAccount(@RequestParam String account) {
+        return service.getEventsByAccount(account);
+    }
+
+    @GetMapping("/accounts/{accountId}/balance")
+    public Map<String, Object> getBalance(@PathVariable String accountId) {
+        BigDecimal balance = service.getBalance(accountId);
+
+        return Map.of(
+                "accountId", accountId,
+                "balance", balance
+        );
+    }
+}
+``

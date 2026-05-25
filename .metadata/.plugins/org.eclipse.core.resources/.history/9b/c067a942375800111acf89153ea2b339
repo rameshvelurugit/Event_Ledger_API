@@ -1,0 +1,5 @@
+package com.assignment.ledger.service;
+
+public class EventRepository {
+
+}

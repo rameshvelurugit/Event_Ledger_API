@@ -1,0 +1,5 @@
+package com.assignment.ledger.exception;
+
+public class GlobalExceptionHandler {
+
+}

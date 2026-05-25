@@ -1,0 +1,41 @@
+package com.assignment.ledger.model;
+
+@Entity
+
+@Table(name = "events")
+
+public class Event {
+
+	   
+	@Id
+
+	   private String eventId;
+
+	   
+	private String accountId;
+
+	   
+	@Enumerated(EnumType.STRING) 
+
+    private EventType type;
+
+	   
+	private BigDecimal amount;
+
+	   
+	private String currency;
+
+	   
+	private Instant eventTimestamp;
+
+	   
+	@Column(columnDefinition = "TEXT") 
+
+    private String metadata;
+
+	   
+	private Instant createdAt = Instant.now();
+
+	    // getters & setters
+
+}

@@ -1,0 +1,13 @@
+spring.application.name=Assignment
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+
+  h2:
+    console:
+      enabled: true

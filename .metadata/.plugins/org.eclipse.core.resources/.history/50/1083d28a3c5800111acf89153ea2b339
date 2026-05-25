@@ -1,0 +1,73 @@
+package com.assignment.ledger.dto;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+public class EventDTO {
+
+    @NotBlank
+    private String eventId;
+
+    @NotBlank
+    private String accountId;
+
+    public String getEventId() {
+		return eventId;
+	}
+
+	public void setEventId(String eventId) {
+		this.eventId = eventId;
+	}
+
+	public String getAccountId() {
+		return accountId;
+	}
+
+	public void setAccountId(String accountId) {
+		this.accountId = accountId;
+	}
+
+	public EventType getType() {
+		return type;
+	}
+
+	public void setType(EventType type) {
+		this.type = type;
+	}
+
+	public BigDecimal getAmount() {
+		return amount;
+	}
+
+	public void setAmount(BigDecimal amount) {
+		this.amount = amount;
+	}
+
+	public String getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(String currency) {
+		this.currency = currency;
+	}
+
+	public Instant getEventTimestamp() {
+		return eventTimestamp;
+	}
+
+	public void setEventTimestamp(Instant eventTimestamp) {
+		this.eventTimestamp = eventTimestamp;
+	}
+
+	@NotNull
+    private EventType type;
+
+    @DecimalMin(value = "0.01", inclusive = true)
+    private BigDecimal amount;
+
+    @NotBlank
+    private String currency;
+
+    @NotNull
+    private Instant eventTimestamp;
+}
