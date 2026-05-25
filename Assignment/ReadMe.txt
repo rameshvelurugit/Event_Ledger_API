@@ -1,0 +1,118 @@
+
+# Event Processing Service
+
+A Spring Boot application for processing account events (credit/debit), ensuring idempotency, handling out-of-order events, and providing account balance queries.
+
+## Features
+
+- REST API for posting account events (credit/debit)
+- Idempotency for event processing
+- Handles out-of-order events
+- Account balance retrieval
+- Input validation
+
+## Tech Stack
+
+- Java
+- Spring Boot
+- Maven
+- JUnit 5 (for testing)
+
+## Getting Started
+
+### Prerequisites
+
+- Java 17+
+- Maven 3.6+
+
+### Build
+
+
+
+### API Endpoints
+
+- `POST /events`  
+  Submit an event (credit/debit) for an account.
+
+- `GET /events?account={accountId}`  
+  Retrieve events for a specific account.
+
+- `GET /accounts/{accountId}/balance`  
+  Get the current balance for an account.
+
+### Example Event Payload
+
+{ "eventId": "evt-1", "accountId": "acct-1", "type": "CREDIT", "amount": 100, "currency": "USD", "eventTimestamp": "2026-05-01T10:00:00Z" }
+
+
+## Testing
+
+Run all tests:
+
+
+mvn test
+
+
+
+
+API documentation
+
+### API Endpoints
+
+#### 1. Submit an Event
+
+- **POST** `/events`
+- **Description:** Submit a credit or debit event for an account. Ensures idempotency and handles out-of-order events.
+- **Request Body Example:**
+  ```json
+  {
+    "eventId": "evt-1",
+    "accountId": "acct-1",
+    "type": "CREDIT",
+    "amount": 100,
+    "currency": "USD",
+    "eventTimestamp": "2026-05-01T10:00:00Z"
+  }
+  ```
+- **Responses:**
+  - `200 OK` – Event processed (or already processed, idempotent).
+  - `400 Bad Request` – Invalid input.
+
+#### 2. Retrieve Events for an Account
+
+- **GET** `/events?account={accountId}`
+- **Description:** Get all events for a specific account, ordered by event timestamp.
+- **Response Example:**
+  ```json
+  [
+    {
+      "eventId": "evt-1",
+      "accountId": "acct-1",
+      "type": "CREDIT",
+      "amount": 100,
+      "currency": "USD",
+      "eventTimestamp": "2026-05-01T10:00:00Z"
+    }
+  ]
+  ```
+- **Responses:**
+  - `200 OK` – List of events.
+  - `400 Bad Request` – Missing or invalid account ID.
+
+#### 3. Get Account Balance
+
+- **GET** `/accounts/{accountId}/balance`
+- **Description:** Retrieve the current balance for a given account.
+- **Response Example:**
+  ```json
+  {
+    "accountId": "acct-1",
+    "balance": 150,
+    "currency": "USD"
+  }
+  ```
+- **Responses:**
+  - `200 OK` – Balance returned.
+  - `404 Not Found` – Account does not exist.
+
+
