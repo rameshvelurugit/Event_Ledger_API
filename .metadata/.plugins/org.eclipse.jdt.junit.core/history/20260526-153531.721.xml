@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="AssignmentApplicationTests" project="Assignment" tests="4" started="4" failures="4" errors="0" ignored="0">
+  <testsuite name="com.example.demo.AssignmentApplicationTests" time="0.443" displayname="AssignmentApplicationTests" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.AssignmentApplicationTests]">
+    <testcase name="testValidation" classname="com.example.demo.AssignmentApplicationTests" time="0.412" displayname="testValidation()" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.AssignmentApplicationTests]/[method:testValidation()]">
+      <failure>java.lang.AssertionError: Status expected:&lt;400&gt; but was:&lt;404&gt;
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:59)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:122)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$9(StatusResultMatchers.java:637)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:214)
+	at com.example.demo.AssignmentApplicationTests.testValidation(AssignmentApplicationTests.java:128)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+
+</failure>
+    </testcase>
+    <testcase name="testBalance" classname="com.example.demo.AssignmentApplicationTests" time="0.013" displayname="testBalance()" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.AssignmentApplicationTests]/[method:testBalance()]">
+      <failure>java.lang.AssertionError: Status expected:&lt;200&gt; but was:&lt;404&gt;
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:59)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:122)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$9(StatusResultMatchers.java:637)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:214)
+	at com.example.demo.AssignmentApplicationTests.testBalance(AssignmentApplicationTests.java:113)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+
+</failure>
+    </testcase>
+    <testcase name="testIdempotency" classname="com.example.demo.AssignmentApplicationTests" time="0.005" displayname="testIdempotency()" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.AssignmentApplicationTests]/[method:testIdempotency()]">
+      <failure>java.lang.AssertionError: Status expected:&lt;200&gt; but was:&lt;404&gt;
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:59)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:122)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$9(StatusResultMatchers.java:637)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:214)
+	at com.example.demo.AssignmentApplicationTests.testIdempotency(AssignmentApplicationTests.java:40)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+
+</failure>
+    </testcase>
+    <testcase name="testOutOfOrderEvents" classname="com.example.demo.AssignmentApplicationTests" time="0.01" displayname="testOutOfOrderEvents()" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.AssignmentApplicationTests]/[method:testOutOfOrderEvents()]">
+      <failure>java.lang.AssertionError: Status expected:&lt;200&gt; but was:&lt;404&gt;
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:59)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:122)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$9(StatusResultMatchers.java:637)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:214)
+	at com.example.demo.AssignmentApplicationTests.testOutOfOrderEvents(AssignmentApplicationTests.java:80)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+
+</failure>
+    </testcase>
+  </testsuite>
+</testrun>

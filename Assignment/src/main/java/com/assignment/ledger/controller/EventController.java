@@ -18,11 +18,100 @@ import com.assignment.ledger.service.EventService;
 
 import jakarta.validation.Valid;
 
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
+
+@RestController
+@RequestMapping("/event-api")
+public class EventController {
+
+    private final EventService service;
+    private static final Logger logger = LoggerFactory.getLogger(EventController.class);
+
+    public EventController(EventService service) {
+        this.service = service;
+    }
+
+    @PostMapping("/events")
+    public ResponseEntity<?> create(@RequestBody @Valid Event event) {
+        logger.info("Received request to create event: {}", event.getEventId());
+
+        try {
+            Event saved = service.createEvent(event);
+
+            logger.info("Event created successfully with ID: {}", saved.getEventId());
+            return ResponseEntity.ok(saved);
+
+        } catch (Exception ex) {
+            logger.error("Error while creating event: {}", event.getEventId(), ex);
+            return ResponseEntity.internalServerError().body("Failed to create event");
+        }
+    }
+
+    @GetMapping("/events/{id}")
+    public Event getById(@PathVariable String id) {
+        logger.info("Fetching event with ID: {}", id);
+
+        try {
+            Event event = service.getEvent(id);
+
+            logger.info("Event retrieved successfully: {}", id);
+            return event;
+
+        } catch (Exception ex) {
+            logger.error("Error fetching event with ID: {}", id, ex);
+            throw ex; // let global handler manage response
+        }
+    }
+
+    @GetMapping("/events")
+    public List<Event> getByAccount(@RequestParam String account) {
+        logger.info("Fetching events for account: {}", account);
+
+        try {
+            List<Event> events = service.getEventsByAccount(account);
+
+            logger.info("Retrieved {} events for account: {}", events.size(), account);
+            return events;
+
+        } catch (Exception ex) {
+            logger.error("Error fetching events for account: {}", account, ex);
+            throw ex;
+        }
+    }
+
+    @GetMapping("/accounts/{accountId}/balance")
+    public Map<String, Object> getBalance(@PathVariable String accountId) {
+        logger.info("Calculating balance for account: {}", accountId);
+
+        try {
+            BigDecimal balance = service.getBalance(accountId);
+
+            logger.info("Balance calculated for account {}: {}", accountId, balance);
+
+            return Map.of(
+                    "accountId", accountId,
+                    "balance", balance
+            );
+
+        } catch (Exception ex) {
+            logger.error("Error calculating balance for account: {}", accountId, ex);
+            throw ex;
+        }
+    }
+}
+
+
+/*
 @RestController
 @RequestMapping("/")
 public class EventController {
 
     private final EventService service;
+    private static final Logger logger = LoggerFactory.getLogger(EventController.class);
 
     public EventController(EventService service) {
         this.service = service;
@@ -36,6 +125,7 @@ public class EventController {
 
     @GetMapping("/events/{id}")
     public Event getById(@PathVariable String id) {
+    	logger.info("Fetching event with id: {}", id);
         return service.getEvent(id);
     }
 
@@ -53,4 +143,6 @@ public class EventController {
                 "balance", balance
         );
     }
-}
+} */
+
+
